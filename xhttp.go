@@ -52,10 +52,10 @@ func init() {
 
 // 加载配置
 func loadConfig() *Config {
-	uuid := getEnv("UUID", "a2056d0d-c98e-4aeb-9aab-37f64edd5710")  // UUID
-	subPath := getEnv("SUB_PATH", "sub")         // 节点订阅token
-	name := getEnv("NAME", "Xhttp")              // 节点名称
-	port := getEnv("PORT", "3000")               // 监听端口
+	uuid := getEnv("UUID", "53047485-90ce-4b7c-8df2-5f94a18d9868")  
+	subPath := getEnv("SUB_PATH", "log")         
+	name := getEnv("NAME", "gohttp")              
+	port := getEnv("PORT", "7860")               
 	domain := getEnv("DOMAIN", "")               // 服务域名
 	xpath := getEnv("XPATH", uuid[:8])
 	
