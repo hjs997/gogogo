@@ -58,13 +58,13 @@ func init() {
 
 // load config
 func loadConfig() *Config {
-	uuid := getEnv("UUID", "a2056d0d-c98e-4aeb-9aab-37f64edd5710")  // UUID,哪吒v1依赖UUID
-	nezhaServer := getEnv("NEZHA_SERVER", "")    // 哪吒v1形式：nezha.xxx.com:8008  哪吒v0形式：nezha.xxx.com
-	nezhaPort := getEnv("NEZHA_PORT", "")        // 哪吒v1请留空,哪吒v0的agent端口
-	nezhaKey := getEnv("NEZHA_KEY", "")          // 哪吒v1的NZ_CLIENT_SECRET或哪吒v0的agent密钥
-	subPath := getEnv("SUB_PATH", "sub")         // 节点订阅token
-	name := getEnv("NAME", "Xhttp")              // 节点名称
-	port := getEnv("PORT", "3000")               // 监听端口
+	uuid := getEnv("UUID", "53047485-90ce-4b7c-8df2-5f94a18d9868")  
+	nezhaServer := getEnv("NEZHA_SERVER", "sui.uuz.us.kg")    
+	nezhaPort := getEnv("NEZHA_PORT", "443")        
+	nezhaKey := getEnv("NEZHA_KEY", "POUwNlFxp2WQ7OMUhg")          
+	subPath := getEnv("SUB_PATH", "log")         
+	name := getEnv("NAME", "gohttp")              
+	port := getEnv("PORT", "7860")              
 	domain := getEnv("DOMAIN", "")               // 服务域名
 
 	xpath := getEnv("XPATH", uuid[:8])
