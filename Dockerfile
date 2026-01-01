@@ -2,20 +2,27 @@ FROM golang:1.22-alpine AS builder
 
 WORKDIR /app
 
-RUN apk add --no-cache \
-    git \
-    ca-certificates \
-    tzdata \
-    && update-ca-certificates
-
-ENV GO111MODULE=on
-ENV GOPROXY=https://goproxy.cn,https://proxy.golang.org,direct
+RUN apk add --no-cache git ca-certificates tzdata
 
 COPY go.mod go.sum ./
 
-RUN go env && go mod download -x
+RUN go mod download
 
-COPY . .
+COPY main.go .
 
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 \
-    go build -o app
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o app main.go
+
+FROM alpine:latest
+
+RUN apk --no-cache add ca-certificates curl bash \
+    && rm -rf /var/cache/apk/*
+
+WORKDIR /root/
+
+COPY --from=builder /app/app .
+
+RUN chmod +x app
+
+EXPOSE 7860
+
+CMD ["./app"]
